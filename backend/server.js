@@ -1,45 +1,23 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db");
+const authRoutes = require("./routes/authRoutes");
+const taskRoutes = require("./routes/taskRoutes");
+
+dotenv.config();
+connectDB();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Connect MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/todoDB")
-  .then(() => console.log("MongoDB Connected"));
+// Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/tasks", taskRoutes);
 
-const Task = mongoose.model("Task", new mongoose.Schema({
-  text: String
-}));
+// Health check
+app.get("/", (req, res) => res.send("API is running..."));
 
-// Add task
-app.post("/add", async (req, res) => {
-  const newTask = new Task(req.body);
-  await newTask.save();
-  res.send(newTask);
-});
-
-// Get tasks
-app.get("/tasks", async (req, res) => {
-  const tasks = await Task.find();
-  res.send(tasks);
-});
-
-// Update a task
-app.put("/update/:id", async (req, res) => {
-  const { id } = req.params;
-  const { text } = req.body;
-  const updatedTask = await Task.findByIdAndUpdate(id, { text }, { new: true });
-  res.send(updatedTask);
-});
-
-// Delete a task
-app.delete("/delete/:id", async (req, res) => {
-  const { id } = req.params;
-  await Task.findByIdAndDelete(id);
-  res.send({ message: "Task deleted successfully" });
-});
-
-app.listen(5000, () => console.log("Server running on port 5000"));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

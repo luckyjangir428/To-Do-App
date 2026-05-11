@@ -1,0 +1,190 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f2f5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== AUTH CARD ===== */
+.auth-card {
+  background: white;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-card h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.auth-card input {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.auth-card input:focus { border-color: #4a90e2; }
+
+.auth-card button {
+  padding: 11px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.auth-card button:hover { background: #2265c7; }
+
+.auth-card p {
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+}
+
+.auth-card p span {
+  color: #4a90e2;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.success { color: #27ae60; text-align: center; }
+.error   { color: #e74c3c; text-align: center; }
+
+/* ===== DASHBOARD ===== */
+.dashboard {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.dashboard-header h2 { color: #333; }
+
+.btn-logout {
+  padding: 7px 16px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-logout:hover { background: #c0392b; }
+
+/* Task Input Row */
+.task-input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.task-input-row input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.task-input-row input:focus { border-color: #4a90e2; }
+
+.btn-add {
+  padding: 10px 20px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-add:hover { background: #2265c7; }
+
+/* Task List */
+.task-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.no-tasks { text-align: center; color: #aaa; padding: 20px 0; }
+
+/* Task Item */
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  background: #fafafa;
+  transition: box-shadow 0.2s;
+}
+
+.task-item:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.task-item input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  accent-color: #4a90e2;
+  flex-shrink: 0;
+}
+
+.task-text {
+  flex: 1;
+  font-size: 15px;
+  color: #333;
+  word-break: break-word;
+}
+
+.edit-input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 2px solid #4a90e2;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+/* Task Buttons */
+.btn-edit   { padding: 6px 12px; background: #e8f0fe; color: #2265c7; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; }
+.btn-delete { padding: 6px 12px; background: #fdecea; color: #c0392b; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; }
+.btn-save   { padding: 6px 12px; background: #e6f4ea; color: #27ae60; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; }
+.btn-cancel { padding: 6px 12px; background: #f5f5f5; color: #666;    border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; }
+
+.btn-edit:hover   { background: #c3d6fb; }
+.btn-delete:hover { background: #f5c6c2; }
+.btn-save:hover   { background: #b8e0c3; }
+.btn-cancel:hover { background: #e0e0e0; }
